@@ -3,12 +3,12 @@
 
 read_csv(here("data/NLSY97_clean.csv")) %>%
   group_by(race, gender) %>%
-  summarize(total_arrests = mean(total_arrests)) %>%
-  ggplot(aes(race, total_arrests, fill = gender)) +
+  summarize(incarceration_rate = sum(incarcerated)/n()) %>%
+  ggplot(aes(race, months_incarcerated, fill = gender)) +
     geom_bar(stat = "identity", position = "dodge") +
     labs(
       x = "Race", 
-      y = "Mean Arrests", 
+      y = "Mean Months Incarcerated", 
       fill = "Gender",
       title = "Mean Number of Arrests in 2002 by Race and Gender") +
     theme_minimal() +
