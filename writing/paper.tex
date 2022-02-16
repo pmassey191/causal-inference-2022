@@ -31,9 +31,9 @@
 }
 
 % set the author, title, and date of the document. \maketitle adds it to the document.
-\author{Nathan Hattersley}
-\title{My Paper on NLSY97 Data}
-\date{Sping 2022}
+\author{Patrick Massey}
+\title{Hidden Curriculum Assignment}
+\date{02/18/2022}
 
 \begin{document}
 \maketitle
@@ -66,7 +66,7 @@ Wherein we do tables and graphs. To include the graph we made in ggplot, we crea
 
 \begin{figure}[H]
     \begin{center}
-        \includegraphics[width=.85\textwidth]{arrests_by_racegender}
+        \includegraphics[width=.85\textwidth]{incarceration_rate_by_racegender}
     \end{center}
     \caption{Mean Number of Arrests in 2002 by Race and Gender (this is the LaTeX caption, not the ggplot title)}
     \label{fig:graph}
@@ -74,9 +74,9 @@ Wherein we do tables and graphs. To include the graph we made in ggplot, we crea
 
 
 Tables are somewhat easier, since \texttt{kableExtra} and \texttt{stargazer} generate LaTeX code that is ready to just ``copy-paste'' into our document. The \texttt{label} argument in the R code is the label that the table will have in the tex output, if you want to \texttt{ref} it.
+\input{../tables/incarceration_rates_by_racegender.tex}
 
-\input{../tables/arrests_by_racegender.tex}
 
-\input{../tables/regress_arrests_by_racegender.tex}
+\input{../tables/regress_incarceration_by_racegender.tex}
 
 \end{document}
