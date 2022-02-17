@@ -1,6 +1,5 @@
 # Builds a bar graph with total arrests on the y axis and race/gender on the
 # x axis. Refer to my presentation on graphing for more detail.
-library(ggthemes)
   read_csv(here("data/NLSY97_clean.csv")) %>%
   group_by(race, gender) %>%
   summarize(count = n(),
