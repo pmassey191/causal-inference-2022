@@ -38,45 +38,28 @@
 \begin{document}
 \maketitle
 
-\section{The First Section}
-
-This is where I talk about basic \LaTeX. Using the \texttt{parskip} package, I can create a new paragraph by using line breaks, which I will do now.
-
-I can also make cool equations inline by using parentheses{\textemdash}like this: \(x + 2\){\textemdash}or by using single dollar signs{\textemdash}like this: $x+2$. Parentheses are preferred because the left and right delimiter are distinct.
-
-I can make cool equations in a block style by using the \texttt{equation} environment like so:
-\begin{equation*}
-    y = x\beta + \varepsilon
-\end{equation*}
-or by using double dollar signs:
-$$
-    y = x\beta + \varepsilon
-$$
-
-Again, the \texttt{equation} environment is preferred because the begin and end delimiters are different.
-
-I can also add a bibliography, but this is beyond the scope of our discussion right now. Overleaf has plenty of resources for this on their \href{https://www.overleaf.com/learn}{website}. Another good place to look for LaTeX help is the \href{https://en.wikibooks.org/wiki/LaTeX}{WikiBook} on it.
-
+\section*{Data}
+I use a subset of data from the 1997 National Longitudinal Survey of Youth, which contains longitudinal data on individuals from 1997 to 2019. In particular I use observations from 2002 that focus on the incarceration status of an individual for that year. When analyzing the data I remove any individuals for which there is no incarceration information available, or if they began the year already incarcerated. After cleaning the data I am left with 8,621 observations. I then create an dummy indicator value for if the individual is incarcerated at all during the year. This indicator variable \textit{incarcerated} will be the variable of interest for the model.
 \newpage
-
-\section{The Second Section}
-
-Wherein we do tables and graphs. To include the graph we made in ggplot, we create the \texttt{figure} environment. The `H' option tells LaTeX to `hold' the position of the figure instead of positioning it somewhere else. I use the \texttt{caption} command to add a caption{\textemdash}although I also put a title on the plot in ggplot so you would typically choose one or the other. I use the \texttt{label} command after the caption to add a label. Then in my paper I can use the \texttt{ref} command and LaTeX knows I am referring to Figure \ref{fig:graph}.
-
-
+\section*{Empirical Analysis} 
+In this analysis I seek to estimate the probability of an individual becoming incarcerated based on race and sex. Looking at Figure \ref{fig:graph} below, we see that Black Males have the highest incarceration rate of almost 6\%. Males in general have a higher incarceration rate than Females. One anomaly is for the Mixed Race (Non-Hispanic) group. This should be seen as an small sample size issue because out of the 8,621 observations Mixed Race (Non-Hispanic) make up 81 observations.
 \begin{figure}[H]
     \begin{center}
         \includegraphics[width=.85\textwidth]{incarceration_rate_by_racegender}
     \end{center}
-    \caption{Mean Number of Arrests in 2002 by Race and Gender (this is the LaTeX caption, not the ggplot title)}
+    \caption{Incarceration Rate in 2002 by Race and Gender}
     \label{fig:graph}
 \end{figure}
-
-
-Tables are somewhat easier, since \texttt{kableExtra} and \texttt{stargazer} generate LaTeX code that is ready to just ``copy-paste'' into our document. The \texttt{label} argument in the R code is the label that the table will have in the tex output, if you want to \texttt{ref} it.
+I summarize the graph in Table \ref{tab:tab:summarystats} below which shows the incarceration rate broken down by sex and race.
 \input{../tables/incarceration_rates_by_racegender.tex}
-
+The model we are seeking to estimate is shown below:
+\begin{equation*}
+Y_i = \beta X_i 
+\end{equation*}
+\newpage
+Where $Y_i$ is a binary value for an individuals incarceration status and $X_i$ is a vector containing sex and race characteristics. I summarize the regression results in Table \ref{tab:regression} below.
 
 \input{../tables/regress_incarceration_by_racegender.tex}
 
+All variables are statistically significant at the 99\% level except for Mixed Race (Non-Hispanic) category which I think goes back to the small $n$ issue.
 \end{document}
