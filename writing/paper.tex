@@ -52,14 +52,16 @@ In this analysis I seek to estimate the probability of an individual becoming in
 \end{figure}
 I summarize the graph in Table \ref{tab:tab:summarystats} below which shows the incarceration rate broken down by sex and race.
 \input{../tables/incarceration_rates_by_racegender.tex}
+\newpage
 The model we are seeking to estimate is shown below:
 \begin{equation*}
 Y_i = \beta X_i 
 \end{equation*}
-\newpage
 Where $Y_i$ is a binary value for an individuals incarceration status and $X_i$ is a vector containing sex and race characteristics. I summarize the regression results in Table \ref{tab:regression} below.
 
 \input{../tables/regress_incarceration_by_racegender.tex}
 
-All variables are statistically significant at the 99\% level except for Mixed Race (Non-Hispanic) category which I think goes back to the small $n$ issue.
+All variables are statistically significant at the 99\% level except for Mixed Race (Non-Hispanic) category which I believe goes back to the small $n$ issue.
+
+Analyzing the regression results we can see that there appears to be racial discrimination towards Black individuals as every other racial group shows a constant that is less than or equal to 0. This indicates that simply being Black shows higher risk of incarceration. We also see that Black Males show higher risk for incarceration than Black Females which matches the trends in the data.
 \end{document}
